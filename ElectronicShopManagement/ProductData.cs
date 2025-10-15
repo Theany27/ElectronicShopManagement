@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElectronicShopManagement
 {
-    public class ProductData
+    public static class ProductData
     {
         public static List<ProductsModel> GetProducts()
         {

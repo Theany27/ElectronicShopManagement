@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace ElectronicShopManagement.Forms
 {
+
     public partial class Products_Stock : Form
     {
+        List<ProductsModel> newProducts = ProductData.GetProducts();
+
         public Products_Stock()
         {
             InitializeComponent();
+            
+
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -23,6 +29,20 @@ namespace ElectronicShopManagement.Forms
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+
+
+
+
+        }
+
+        private void Products_Stock_Load(object sender, EventArgs e)
         {
 
         }
