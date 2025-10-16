@@ -459,13 +459,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>1.29861in</Height>
+        <Height>0.87153in</Height>
         <Style />
       </Body>
       <Width>6.73833in</Width>
       <Page>
         <PageHeader>
-          <Height>2in</Height>
+          <Height>1.46875in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -658,15 +658,19 @@
                       <Value>=Sum(Fields!Prices.Value * Fields!SellQty.Value, "DataSet")</Value>
                       <Style />
                     </TextRun>
+                    <TextRun>
+                      <Value>$</Value>
+                      <Style />
+                    </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox16</rd:DefaultName>
-              <Top>0.19791in</Top>
-              <Left>5.19666in</Left>
+              <Top>0.06944in</Top>
+              <Left>4.91888in</Left>
               <Height>0.25in</Height>
-              <Width>0.54167in</Width>
+              <Width>0.70834in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -698,8 +702,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>0.12499in</Top>
-              <Left>4.4293in</Left>
+              <Top>0.06944in</Top>
+              <Left>4.19666in</Left>
               <Height>0.32292in</Height>
               <Width>1in</Width>
               <ZIndex>1</ZIndex>

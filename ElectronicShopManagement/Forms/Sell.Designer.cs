@@ -184,9 +184,10 @@
             this.txtamount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtamount.Location = new System.Drawing.Point(902, 490);
             this.txtamount.Name = "txtamount";
-            this.txtamount.Size = new System.Drawing.Size(53, 26);
+            this.txtamount.Size = new System.Drawing.Size(59, 26);
             this.txtamount.TabIndex = 36;
-            this.txtamount.Text = "0.00";
+            this.txtamount.Text = "0.00 ";
+            this.txtamount.Click += new System.EventHandler(this.txtamount_Click);
             // 
             // combocashier
             // 

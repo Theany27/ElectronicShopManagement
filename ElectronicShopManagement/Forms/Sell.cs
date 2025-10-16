@@ -33,6 +33,11 @@ namespace ElectronicShopManagement.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (combocashier.SelectedItem == null)
+            {
+                MessageBox.Show("Please select Cashier name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             ProductForSellModel productsModel = new ProductForSellModel()
             {
 
@@ -43,7 +48,9 @@ namespace ElectronicShopManagement.Forms
                 Prices = Convert.ToDecimal(txtsellprice.Text),
                 SellQty = Convert.ToInt32(txtsellqty.Text),
                 date = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"),
+
             };
+            
             products.Add(productsModel);
             
 
@@ -52,6 +59,8 @@ namespace ElectronicShopManagement.Forms
             txtamount.Text = productsModel.totalAmount.ToString("0.00");
 
             txtsellqty.Text = "1";
+
+           
 
             tblshowproductsell.DataSource = null;
             tblshowproductsell.DataSource = products;
@@ -235,6 +244,11 @@ namespace ElectronicShopManagement.Forms
         }
 
         private void Sell_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtamount_Click(object sender, EventArgs e)
         {
 
         }
