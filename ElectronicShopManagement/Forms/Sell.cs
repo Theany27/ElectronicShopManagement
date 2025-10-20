@@ -34,7 +34,7 @@ namespace ElectronicShopManagement.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             if (combocashier.SelectedItem == null)
-            {
+            { 
                 MessageBox.Show("Please select Cashier name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -130,7 +130,6 @@ namespace ElectronicShopManagement.Forms
 
                 await Task.Delay(5000); // wait 5 seconds
             }
-           
         }
         private async void btnpayment_Click(object sender, EventArgs e)
         {

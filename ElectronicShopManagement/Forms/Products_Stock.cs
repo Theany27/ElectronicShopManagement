@@ -40,7 +40,7 @@ namespace ElectronicShopManagement.Forms
 
         private void Products_Stock_Load(object sender, EventArgs e)
         {
-            InitializeForm();
+            //InitializeForm();
         }
 
         private void InitializeForm()
@@ -107,7 +107,7 @@ namespace ElectronicShopManagement.Forms
                 comboboxcategory.SelectedIndex = 0;
         }
 
-        // ========== EVENT HANDLERS ==========
+         //========== EVENT HANDLERS ==========
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -122,6 +122,8 @@ namespace ElectronicShopManagement.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             AddProduct();
+            Message.show("Form cleared. You can add a new product now.", "Information");
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -182,7 +184,10 @@ namespace ElectronicShopManagement.Forms
                     UpdateCategoryComboBoxes();
 
                     // ✅ FIX 2: Updated professional message
-                    MessageBox.Show("Product added successfully! Available in sales system immediately.", "Success");
+                    //MessageBox.Show("Product added successfully! Available in sales system immediately.", "Success");
+                    MessageBox.Show("Product added successfully! Now available in the sales system.", "Success");
+                    MessageBox.Show("hi");
+
                 }
             }
             catch (Exception ex)
