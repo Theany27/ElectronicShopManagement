@@ -80,7 +80,6 @@
             this.tblshowreport.Name = "tblshowreport";
             this.tblshowreport.Size = new System.Drawing.Size(1047, 290);
             this.tblshowreport.TabIndex = 25;
-            this.tblshowreport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblshowreport_CellContentClick);
             // 
             // button1
             // 
