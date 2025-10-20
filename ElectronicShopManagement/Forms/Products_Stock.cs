@@ -40,7 +40,7 @@ namespace ElectronicShopManagement.Forms
 
         private void Products_Stock_Load(object sender, EventArgs e)
         {
-            //InitializeForm();
+            InitializeForm();
         }
 
         private void InitializeForm()
@@ -122,7 +122,7 @@ namespace ElectronicShopManagement.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             AddProduct();
-            Message.show("Form cleared. You can add a new product now.", "Information");
+            //Message.show("Form cleared. You can add a new product now.", "Information");6
 
         }
 
@@ -186,7 +186,6 @@ namespace ElectronicShopManagement.Forms
                     // ✅ FIX 2: Updated professional message
                     //MessageBox.Show("Product added successfully! Available in sales system immediately.", "Success");
                     MessageBox.Show("Product added successfully! Now available in the sales system.", "Success");
-                    MessageBox.Show("hi");
 
                 }
             }

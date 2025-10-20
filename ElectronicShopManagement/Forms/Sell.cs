@@ -115,7 +115,7 @@ namespace ElectronicShopManagement.Forms
                             break;
                         }
                     }
-                        //products.Clear();
+                        products.Clear();
                         tblshowproductsell.DataSource = null;
                         tblshowproductsell.DataSource = products; // rebind
                         tblshowproductsell.Columns["totalAmount"].Visible = false;

@@ -41,7 +41,7 @@ namespace ElectronicShopManagement.Forms
             reportViewer1.LocalReport.DataSources.Add(rds);
             //reportViewer1.RefreshReport();
             this.reportViewer1.RefreshReport();
-            data.Clear();
+            //data.Clear();
 
         }
     }

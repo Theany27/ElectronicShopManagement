@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.toplabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.toplabel = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tblrecentsell = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblrecentsell)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,47 +57,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 100);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Desktop;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(345, 32);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Red;
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(633, 32);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 100);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.RosyBrown;
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Location = new System.Drawing.Point(902, 32);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 100);
-            this.panel4.TabIndex = 3;
-            // 
-            // toplabel
-            // 
-            this.toplabel.AutoSize = true;
-            this.toplabel.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toplabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toplabel.Location = new System.Drawing.Point(14, 12);
-            this.toplabel.Name = "toplabel";
-            this.toplabel.Size = new System.Drawing.Size(94, 19);
-            this.toplabel.TabIndex = 8;
-            this.toplabel.Text = "Sell Histries";
             // 
             // label1
             // 
@@ -111,6 +70,27 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "100";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // toplabel
+            // 
+            this.toplabel.AutoSize = true;
+            this.toplabel.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toplabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toplabel.Location = new System.Drawing.Point(14, 12);
+            this.toplabel.Name = "toplabel";
+            this.toplabel.Size = new System.Drawing.Size(94, 19);
+            this.toplabel.TabIndex = 8;
+            this.toplabel.Text = "Sell Histries";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Desktop;
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Location = new System.Drawing.Point(345, 32);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.TabIndex = 1;
             // 
             // label2
             // 
@@ -135,6 +115,16 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Products Stock";
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Red;
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Location = new System.Drawing.Point(633, 32);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 100);
+            this.panel3.TabIndex = 2;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -157,6 +147,16 @@
             this.label5.Size = new System.Drawing.Size(93, 19);
             this.label5.TabIndex = 12;
             this.label5.Text = "Low Stocks";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.RosyBrown;
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Location = new System.Drawing.Point(902, 32);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 100);
+            this.panel4.TabIndex = 3;
             // 
             // label6
             // 
@@ -181,26 +181,27 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Reports";
             // 
-            // dataGridView1
+            // tblrecentsell
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 201);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1066, 426);
-            this.dataGridView1.TabIndex = 4;
+            this.tblrecentsell.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tblrecentsell.Location = new System.Drawing.Point(12, 201);
+            this.tblrecentsell.Name = "tblrecentsell";
+            this.tblrecentsell.Size = new System.Drawing.Size(1066, 426);
+            this.tblrecentsell.TabIndex = 4;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1115, 639);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tblrecentsell);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Home";
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.Home_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -209,7 +210,7 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblrecentsell)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -228,6 +229,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tblrecentsell;
     }
 }
