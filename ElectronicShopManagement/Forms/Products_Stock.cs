@@ -112,7 +112,7 @@ namespace ElectronicShopManagement.Forms
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            LoadSelectedProduct();
+            //LoadSelectedProduct();   ---------------------------------------
         }
 
         // Other event handlers that exist in designer
@@ -262,7 +262,7 @@ namespace ElectronicShopManagement.Forms
             }
         }
 
-        private void LoadSelectedProduct()
+        /*private void LoadSelectedProduct()
         {
             try
             {
@@ -280,7 +280,7 @@ namespace ElectronicShopManagement.Forms
             {
                 // Silent fail for selection changes
             }
-        }
+        }*/
 
         private void FilterProducts()
         {
@@ -391,6 +391,11 @@ namespace ElectronicShopManagement.Forms
             {
                 MessageBox.Show($"Error updating categories: {ex.Message}", "Error");
             }
+        }
+
+        private void txtproid_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
