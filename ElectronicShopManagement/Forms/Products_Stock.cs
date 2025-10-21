@@ -41,6 +41,7 @@ namespace ElectronicShopManagement.Forms
         private void Products_Stock_Load(object sender, EventArgs e)
         {
             InitializeForm();
+            tblproductstock.DataSource = SharedProducts;
         }
 
         private void InitializeForm()
@@ -52,45 +53,18 @@ namespace ElectronicShopManagement.Forms
             }
 
             filteredProducts = new List<ProductsModel>();
-            SetupDataGridView();
             LoadProducts();
             SetupComboBoxes();
         }
 
-        private void SetupDataGridView()
-        {
-            tblproductstock.Columns.Clear();
-            tblproductstock.Columns.Add("ProductID", "Product ID");
-            tblproductstock.Columns.Add("ProductName", "Product Name");
-            tblproductstock.Columns.Add("Category", "Category");
-            tblproductstock.Columns.Add("Price", "Price");
-            tblproductstock.Columns.Add("StockQuantity", "Quantity");
-            tblproductstock.Columns["Price"].DefaultCellStyle.Format = "C2";
-            tblproductstock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            tblproductstock.ReadOnly = true;
-            tblproductstock.AllowUserToAddRows = false;
-        }
+       
 
         private void LoadProducts()
         {
             filteredProducts = SharedProducts.ToList();
-            RefreshDataGridView();
         }
 
-        private void RefreshDataGridView()
-        {
-            tblproductstock.Rows.Clear();
-            foreach (var product in filteredProducts)
-            {
-                tblproductstock.Rows.Add(
-                    product.ProductID,
-                    product.ProductName,
-                    product.Category,
-                    product.Price,
-                    product.StockQuantity
-                );
-            }
-        }
+        
 
         private void SetupComboBoxes()
         {
@@ -177,10 +151,10 @@ namespace ElectronicShopManagement.Forms
                     SharedProducts.Add(newProduct);
 
                     // ✅ FIX 1: Update filteredProducts to include the new product
-                    filteredProducts = SharedProducts.ToList();
-
+                    //filteredProducts = SharedProducts.ToList();
+                    tblproductstock.DataSource = null;
+                    tblproductstock.DataSource = SharedProducts;
                     ClearForm();
-                    RefreshDataGridView();
                     UpdateCategoryComboBoxes();
 
                     // ✅ FIX 2: Updated professional message
@@ -234,7 +208,7 @@ namespace ElectronicShopManagement.Forms
                     filteredProducts = SharedProducts.ToList();
 
                     ClearForm();
-                    RefreshDataGridView();
+                    //RefreshDataGridView();
 
                     // ✅ FIX 2: Updated professional message
                     MessageBox.Show("Product updated successfully! Changes applied to sales system.", "Success");
@@ -275,7 +249,7 @@ namespace ElectronicShopManagement.Forms
                     filteredProducts = SharedProducts.ToList();
 
                     ClearForm();
-                    RefreshDataGridView();
+                    //RefreshDataGridView();
                     UpdateCategoryComboBoxes();
 
                     // ✅ FIX 2: Updated professional message
@@ -321,8 +295,8 @@ namespace ElectronicShopManagement.Forms
                      p.ProductID.ToLower().Contains(searchText)) &&
                     (selectedCategory == "All Categories" || p.Category == selectedCategory)
                 ).ToList();
-
-                RefreshDataGridView();
+                tblproductstock.DataSource = null;
+                tblproductstock.DataSource = filteredProducts;
             }
             catch (Exception ex)
             {
