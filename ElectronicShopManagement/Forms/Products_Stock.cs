@@ -27,7 +27,7 @@ namespace ElectronicShopManagement.Forms
             button1.Click -= button1_Click;
             button2.Click -= button2_Click;
             button3.Click -= button3_Click;
-            tblproductstock.SelectionChanged -= DataGridView1_SelectionChanged;
+            
 
             // Add events
             textBox1.TextChanged += textBox1_TextChanged;
@@ -35,7 +35,7 @@ namespace ElectronicShopManagement.Forms
             button1.Click += button1_Click;
             button2.Click += button2_Click;
             button3.Click += button3_Click;
-            tblproductstock.SelectionChanged += DataGridView1_SelectionChanged;
+       
         }
 
         private void Products_Stock_Load(object sender, EventArgs e)
@@ -136,10 +136,7 @@ namespace ElectronicShopManagement.Forms
             DeleteProduct();
         }
 
-        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            //LoadSelectedProduct();   ---------------------------------------
-        }
+       
 
         // Other event handlers that exist in designer
         private void textBox3_TextChanged(object sender, EventArgs e) { }
@@ -176,14 +173,14 @@ namespace ElectronicShopManagement.Forms
                     // Add to shared list
                     SharedProducts.Add(newProduct);
 
-                    // ✅ FIX 1: Update filteredProducts to include the new product
+                    // Update filteredProducts to include the new product
                     filteredProducts = SharedProducts.ToList();
 
                     ClearForm();
                     RefreshDataGridView();
                     UpdateCategoryComboBoxes();
 
-                    // ✅ FIX 2: Updated professional message
+                    // Updated professional message
                     //MessageBox.Show("Product added successfully! Available in sales system immediately.", "Success");
                     MessageBox.Show("Product added successfully! Now available in the sales system.", "Success");
 
@@ -230,13 +227,13 @@ namespace ElectronicShopManagement.Forms
                         productToUpdate.StockQuantity = int.Parse(txtproqty.Text);
                     }
 
-                    // ✅ FIX 1: Refresh filteredProducts to show updated data
+                    // : Refresh filteredProducts to show updated data
                     filteredProducts = SharedProducts.ToList();
 
                     ClearForm();
                     RefreshDataGridView();
 
-                    // ✅ FIX 2: Updated professional message
+                    // : Updated professional message
                     MessageBox.Show("Product updated successfully! Changes applied to sales system.", "Success");
                 }
             }
@@ -271,14 +268,14 @@ namespace ElectronicShopManagement.Forms
                     // Remove from both lists
                     SharedProducts.RemoveAll(p => p.ProductID == productId);
 
-                    // ✅ FIX 1: Update filteredProducts to remove the deleted product
+                    // : Update filteredProducts to remove the deleted product
                     filteredProducts = SharedProducts.ToList();
 
                     ClearForm();
                     RefreshDataGridView();
                     UpdateCategoryComboBoxes();
 
-                    // ✅ FIX 2: Updated professional message
+                    // : Updated professional message
                     MessageBox.Show("Product deleted successfully! Removed from sales system.", "Success");
                 }
             }
@@ -288,25 +285,7 @@ namespace ElectronicShopManagement.Forms
             }
         }
 
-        /*private void LoadSelectedProduct()
-        {
-            try
-            {
-                if (tblproductstock.SelectedRows.Count > 0 && tblproductstock.SelectedRows[0].Cells["ProductID"].Value != null)
-                {
-                    var selectedRow = tblproductstock.SelectedRows[0];
-                    txtproid.Text = selectedRow.Cells["ProductID"].Value.ToString();
-                    comboboxcategory.SelectedItem = selectedRow.Cells["Category"].Value.ToString();
-                    txtproname.Text = selectedRow.Cells["ProductName"].Value.ToString();
-                    txtproprice.Text = selectedRow.Cells["Price"].Value.ToString();
-                    txtproqty.Text = selectedRow.Cells["StockQuantity"].Value.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Silent fail for selection changes
-            }
-        }*/
+       
 
         private void FilterProducts()
         {
