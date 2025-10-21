@@ -20,8 +20,7 @@ namespace ElectronicShopManagement.Forms
 
         private void Invoice_Load(object sender, EventArgs e)
         {
-            //List<ProductForSellModel> employees;
-            // your data
+            
 
             var data = Sell.products;
             var invoiceData = data.Select(p => new ProductForSellModel

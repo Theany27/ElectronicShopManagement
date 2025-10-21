@@ -37,6 +37,8 @@ namespace ElectronicShopManagement.Forms
                 Amount = p.Amount,
                 Categories = p.Categories
             }).ToList();
+
+
             tblrecentsell.DataSource = null;
             tblrecentsell.DataSource = recentData;
             tblrecentsell.Refresh();
