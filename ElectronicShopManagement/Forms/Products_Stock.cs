@@ -9,6 +9,7 @@ namespace ElectronicShopManagement.Forms
     {
         // Static list for sharing data with other forms
         public static List<ProductsModel> SharedProducts = new List<ProductsModel>();
+        public static event Action InventoryChanged;
 
         private List<ProductsModel> filteredProducts;
 
@@ -17,6 +18,8 @@ namespace ElectronicShopManagement.Forms
             InitializeComponent();
             // Manually wire up all events
             WireUpEvents();
+            tblproductstock.DataSource = SharedProducts;
+
         }
 
         private void WireUpEvents()
