@@ -30,7 +30,7 @@ namespace ElectronicShopManagement.Forms
             button1.Click -= button1_Click;
             button2.Click -= button2_Click;
             button3.Click -= button3_Click;
-            
+            tblproductstock.SelectionChanged -= tblproductstock_SelectionChanged;
 
             // Add events
             textBox1.TextChanged += textBox1_TextChanged;
@@ -38,13 +38,14 @@ namespace ElectronicShopManagement.Forms
             button1.Click += button1_Click;
             button2.Click += button2_Click;
             button3.Click += button3_Click;
-       
+            tblproductstock.SelectionChanged += tblproductstock_SelectionChanged;
         }
 
         private void Products_Stock_Load(object sender, EventArgs e)
         {
             InitializeForm();
-            tblproductstock.DataSource = SharedProducts;
+            tblproductstock.DataSource = filteredProducts;
+            ClearFormForAdd(); // Start with clean form for adding
         }
 
         private void InitializeForm()
@@ -60,14 +61,10 @@ namespace ElectronicShopManagement.Forms
             SetupComboBoxes();
         }
 
-       
-
         private void LoadProducts()
         {
             filteredProducts = SharedProducts.ToList();
         }
-
-        
 
         private void SetupComboBoxes()
         {
@@ -84,7 +81,7 @@ namespace ElectronicShopManagement.Forms
                 comboboxcategory.SelectedIndex = 0;
         }
 
-         //========== EVENT HANDLERS ==========
+        //========== EVENT HANDLERS ==========
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -99,13 +96,10 @@ namespace ElectronicShopManagement.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             AddProduct();
-            //Message.show("Form cleared. You can add a new product now.", "Information");6
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            UpdateProduct();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -113,12 +107,16 @@ namespace ElectronicShopManagement.Forms
             DeleteProduct();
         }
 
-       
+        private void tblproductstock_SelectionChanged(object sender, EventArgs e)
+        {
+            LoadSelectedProductData();
+        }
 
         // Other event handlers that exist in designer
         private void textBox3_TextChanged(object sender, EventArgs e) { }
         private void label4_Click(object sender, EventArgs e) { }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void txtproid_TextChanged(object sender, EventArgs e) { }
 
         // ========== CORE FUNCTIONALITY ==========
 
@@ -153,13 +151,11 @@ namespace ElectronicShopManagement.Forms
                     // Update filteredProducts to include the new product
                     filteredProducts = SharedProducts.ToList();
 
-                    ClearForm();
+                    RefreshDataGridView();
+                    ClearFormForAdd();
                     UpdateCategoryComboBoxes();
 
-                    // Updated professional message
-                    //MessageBox.Show("Product added successfully! Available in sales system immediately.", "Success");
                     MessageBox.Show("Product added successfully! Now available in the sales system.", "Success");
-
                 }
             }
             catch (Exception ex)
@@ -203,13 +199,12 @@ namespace ElectronicShopManagement.Forms
                         productToUpdate.StockQuantity = int.Parse(txtproqty.Text);
                     }
 
-                    // : Refresh filteredProducts to show updated data
+                    // Refresh filteredProducts to show updated data
                     filteredProducts = SharedProducts.ToList();
 
-                    ClearForm();
-                    //RefreshDataGridView();
+                    RefreshDataGridView();
+                    ClearFormForAdd();
 
-                    // : Updated professional message
                     MessageBox.Show("Product updated successfully! Changes applied to sales system.", "Success");
                 }
             }
@@ -244,14 +239,13 @@ namespace ElectronicShopManagement.Forms
                     // Remove from both lists
                     SharedProducts.RemoveAll(p => p.ProductID == productId);
 
-                    // : Update filteredProducts to remove the deleted product
+                    // Update filteredProducts to remove the deleted product
                     filteredProducts = SharedProducts.ToList();
 
-                    ClearForm();
-                    //RefreshDataGridView();
+                    RefreshDataGridView();
+                    ClearFormForAdd();
                     UpdateCategoryComboBoxes();
 
-                    // : Updated professional message
                     MessageBox.Show("Product deleted successfully! Removed from sales system.", "Success");
                 }
             }
@@ -261,7 +255,41 @@ namespace ElectronicShopManagement.Forms
             }
         }
 
-       
+        private void LoadSelectedProductData()
+        {
+            try
+            {
+                if (tblproductstock.SelectedRows.Count > 0)
+                {
+                    var selectedRow = tblproductstock.SelectedRows[0];
+
+                    // Check if the row has data (not a header or empty row)
+                    if (selectedRow.Cells["ProductID"].Value != null)
+                    {
+                        // Load data from selected row into textboxes
+                        txtproid.Text = selectedRow.Cells["ProductID"].Value?.ToString() ?? "";
+                        txtproname.Text = selectedRow.Cells["ProductName"].Value?.ToString() ?? "";
+                        txtproprice.Text = selectedRow.Cells["Price"].Value?.ToString() ?? "";
+                        txtproqty.Text = selectedRow.Cells["StockQuantity"].Value?.ToString() ?? "";
+
+                        // Set the category in combobox
+                        string category = selectedRow.Cells["Category"].Value?.ToString() ?? "";
+                        if (!string.IsNullOrEmpty(category) && comboboxcategory.Items.Contains(category))
+                        {
+                            comboboxcategory.SelectedItem = category;
+                        }
+                        else if (comboboxcategory.Items.Count > 0)
+                        {
+                            comboboxcategory.SelectedIndex = 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading product data: {ex.Message}", "Error");
+            }
+        }
 
         private void FilterProducts()
         {
@@ -276,13 +304,19 @@ namespace ElectronicShopManagement.Forms
                      p.ProductID.ToLower().Contains(searchText)) &&
                     (selectedCategory == "All Categories" || p.Category == selectedCategory)
                 ).ToList();
-                tblproductstock.DataSource = null;
-                tblproductstock.DataSource = filteredProducts;
+
+                RefreshDataGridView();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error filtering products: {ex.Message}", "Error");
             }
+        }
+
+        private void RefreshDataGridView()
+        {
+            tblproductstock.DataSource = null;
+            tblproductstock.DataSource = filteredProducts;
         }
 
         private bool ValidateInputs()
@@ -341,15 +375,18 @@ namespace ElectronicShopManagement.Forms
             return true;
         }
 
-        private void ClearForm()
+        private void ClearFormForAdd()
         {
             txtproid.Clear();
-            if (comboboxcategory.Items.Count > 0)
-                comboboxcategory.SelectedIndex = 0;
             txtproname.Clear();
             txtproprice.Clear();
             txtproqty.Clear();
+
+            if (comboboxcategory.Items.Count > 0)
+                comboboxcategory.SelectedIndex = 0;
+
             tblproductstock.ClearSelection();
+            txtproid.Focus(); // Set focus to Product ID for new entry
         }
 
         private void UpdateCategoryComboBoxes()
@@ -373,15 +410,10 @@ namespace ElectronicShopManagement.Forms
                 MessageBox.Show($"Error updating categories: {ex.Message}", "Error");
             }
         }
-
-        private void txtproid_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
             UpdateProduct();
         }
+
     }
 }
