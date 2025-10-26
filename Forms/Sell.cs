@@ -17,7 +17,6 @@ namespace ElectronicShopManagement.Forms
     {
         public static List<ProductForSellModel> products = new List<ProductForSellModel>();
         public static List<RecentSell> RecentProducts = new List<RecentSell>();
-        public static List<SalesRepository> ReportProducts = new List<SalesRepository>();
 
 
         public Sell()
@@ -74,7 +73,7 @@ namespace ElectronicShopManagement.Forms
             productsModel.totalAmount = products.Sum(p => p.Prices * p.SellQty) + productsModel.Amount;
             products.Add(productsModel);
 
-            txtamount.Text = productsModel.totalAmount.ToString("0.00");
+            txtamount.Text = $"{productsModel.totalAmount.ToString("0.00")}$";
             txtsellqty.Text = "1";
 
             tblshowproductsell.DataSource = null;
@@ -265,7 +264,7 @@ namespace ElectronicShopManagement.Forms
 
                 txtamount.Text = products.Count == 0
                     ? "0.00"
-                    : products.Sum(p => p.Amount).ToString("0.00");
+                    : $"{products.Sum(p => p.Amount).ToString("0.00")}$";
             }
         }
 
@@ -278,6 +277,11 @@ namespace ElectronicShopManagement.Forms
             tblshowproductsell.Columns["totalAmount"].Visible = false;
             tblshowproductsell.Columns["ID"].Visible = false;
             tblshowproductsell.Columns["date"].Visible = false;
+        }
+
+        private void Sell_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

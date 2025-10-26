@@ -200,7 +200,7 @@
             this.txtamount.AutoSize = true;
             this.txtamount.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtamount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtamount.Location = new System.Drawing.Point(902, 490);
+            this.txtamount.Location = new System.Drawing.Point(917, 490);
             this.txtamount.Name = "txtamount";
             this.txtamount.Size = new System.Drawing.Size(59, 26);
             this.txtamount.TabIndex = 36;
@@ -267,6 +267,7 @@
             this.Controls.Add(this.label3);
             this.Name = "Sell";
             this.Text = "Sell";
+            this.Load += new System.EventHandler(this.Sell_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tblshowproductsell)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

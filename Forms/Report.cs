@@ -30,7 +30,8 @@ namespace ElectronicShopManagement.Forms
 
             int totalQty = list.Sum(p => p.SellQty);
             decimal totalAmount = list.Sum(p => p.Prices * p.SellQty);
-            labeltotalamounreport.Text = Convert.ToString(totalAmount);
+            labeltotalamounreport.Text = $"{Convert.ToString(totalAmount)}$";
+
 
 
             MessageBox.Show($"✅ Found {list.Count} sale records\n" +
@@ -142,7 +143,7 @@ namespace ElectronicShopManagement.Forms
             // Optional: គណនាសរុប
             int totalQty = list.Sum(p => p.SellQty);
             decimal totalAmount = list.Sum(p => p.Prices * p.SellQty);
-            labeltotalamounreport.Text = Convert.ToString(totalAmount);
+            labeltotalamounreport.Text = $"{Convert.ToString(totalAmount)}$";
             // ✅ បើមានទិន្នន័យ បង្ហាញវា
             dvgShowData.DataSource = null;
             dvgShowData.DataSource = list;
