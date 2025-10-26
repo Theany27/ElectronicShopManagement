@@ -92,6 +92,7 @@
             this.txtproid.Name = "txtproid";
             this.txtproid.Size = new System.Drawing.Size(129, 20);
             this.txtproid.TabIndex = 13;
+            this.txtproid.TextChanged += new System.EventHandler(this.txtproid_TextChanged);
             // 
             // label2
             // 
@@ -202,6 +203,7 @@
             this.button2.TabIndex = 23;
             this.button2.Text = "Update";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button3
             // 
@@ -219,6 +221,7 @@
             this.tblproductstock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tblproductstock.Location = new System.Drawing.Point(12, 287);
             this.tblproductstock.Name = "tblproductstock";
+            this.tblproductstock.RowHeadersWidth = 62;
             this.tblproductstock.Size = new System.Drawing.Size(1127, 405);
             this.tblproductstock.TabIndex = 25;
             // 
@@ -226,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1207, 698);
+            this.ClientSize = new System.Drawing.Size(1207, 682);
             this.Controls.Add(this.tblproductstock);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);

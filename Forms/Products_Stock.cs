@@ -9,6 +9,7 @@ namespace ElectronicShopManagement.Forms
     {
         // Static list for sharing data with other forms
         public static List<ProductsModel> SharedProducts = new List<ProductsModel>();
+        public static event Action InventoryChanged;
 
         private List<ProductsModel> filteredProducts;
 
@@ -17,6 +18,8 @@ namespace ElectronicShopManagement.Forms
             InitializeComponent();
             // Manually wire up all events
             WireUpEvents();
+            tblproductstock.DataSource = SharedProducts;
+
         }
 
         private void WireUpEvents()
@@ -27,7 +30,7 @@ namespace ElectronicShopManagement.Forms
             button1.Click -= button1_Click;
             button2.Click -= button2_Click;
             button3.Click -= button3_Click;
-            tblproductstock.SelectionChanged -= DataGridView1_SelectionChanged;
+            
 
             // Add events
             textBox1.TextChanged += textBox1_TextChanged;
@@ -35,12 +38,13 @@ namespace ElectronicShopManagement.Forms
             button1.Click += button1_Click;
             button2.Click += button2_Click;
             button3.Click += button3_Click;
-            tblproductstock.SelectionChanged += DataGridView1_SelectionChanged;
+       
         }
 
         private void Products_Stock_Load(object sender, EventArgs e)
         {
             InitializeForm();
+            tblproductstock.DataSource = SharedProducts;
         }
 
         private void InitializeForm()
@@ -52,45 +56,18 @@ namespace ElectronicShopManagement.Forms
             }
 
             filteredProducts = new List<ProductsModel>();
-            SetupDataGridView();
             LoadProducts();
             SetupComboBoxes();
         }
 
-        private void SetupDataGridView()
-        {
-            tblproductstock.Columns.Clear();
-            tblproductstock.Columns.Add("ProductID", "Product ID");
-            tblproductstock.Columns.Add("ProductName", "Product Name");
-            tblproductstock.Columns.Add("Category", "Category");
-            tblproductstock.Columns.Add("Price", "Price");
-            tblproductstock.Columns.Add("StockQuantity", "Quantity");
-            tblproductstock.Columns["Price"].DefaultCellStyle.Format = "C2";
-            tblproductstock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            tblproductstock.ReadOnly = true;
-            tblproductstock.AllowUserToAddRows = false;
-        }
+       
 
         private void LoadProducts()
         {
             filteredProducts = SharedProducts.ToList();
-            RefreshDataGridView();
         }
 
-        private void RefreshDataGridView()
-        {
-            tblproductstock.Rows.Clear();
-            foreach (var product in filteredProducts)
-            {
-                tblproductstock.Rows.Add(
-                    product.ProductID,
-                    product.ProductName,
-                    product.Category,
-                    product.Price,
-                    product.StockQuantity
-                );
-            }
-        }
+        
 
         private void SetupComboBoxes()
         {
@@ -136,10 +113,7 @@ namespace ElectronicShopManagement.Forms
             DeleteProduct();
         }
 
-        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            LoadSelectedProduct();
-        }
+       
 
         // Other event handlers that exist in designer
         private void textBox3_TextChanged(object sender, EventArgs e) { }
@@ -176,14 +150,13 @@ namespace ElectronicShopManagement.Forms
                     // Add to shared list
                     SharedProducts.Add(newProduct);
 
-                    // ✅ FIX 1: Update filteredProducts to include the new product
+                    // Update filteredProducts to include the new product
                     filteredProducts = SharedProducts.ToList();
 
                     ClearForm();
-                    RefreshDataGridView();
                     UpdateCategoryComboBoxes();
 
-                    // ✅ FIX 2: Updated professional message
+                    // Updated professional message
                     //MessageBox.Show("Product added successfully! Available in sales system immediately.", "Success");
                     MessageBox.Show("Product added successfully! Now available in the sales system.", "Success");
 
@@ -230,13 +203,13 @@ namespace ElectronicShopManagement.Forms
                         productToUpdate.StockQuantity = int.Parse(txtproqty.Text);
                     }
 
-                    // ✅ FIX 1: Refresh filteredProducts to show updated data
+                    // : Refresh filteredProducts to show updated data
                     filteredProducts = SharedProducts.ToList();
 
                     ClearForm();
-                    RefreshDataGridView();
+                    //RefreshDataGridView();
 
-                    // ✅ FIX 2: Updated professional message
+                    // : Updated professional message
                     MessageBox.Show("Product updated successfully! Changes applied to sales system.", "Success");
                 }
             }
@@ -271,14 +244,14 @@ namespace ElectronicShopManagement.Forms
                     // Remove from both lists
                     SharedProducts.RemoveAll(p => p.ProductID == productId);
 
-                    // ✅ FIX 1: Update filteredProducts to remove the deleted product
+                    // : Update filteredProducts to remove the deleted product
                     filteredProducts = SharedProducts.ToList();
 
                     ClearForm();
-                    RefreshDataGridView();
+                    //RefreshDataGridView();
                     UpdateCategoryComboBoxes();
 
-                    // ✅ FIX 2: Updated professional message
+                    // : Updated professional message
                     MessageBox.Show("Product deleted successfully! Removed from sales system.", "Success");
                 }
             }
@@ -288,25 +261,7 @@ namespace ElectronicShopManagement.Forms
             }
         }
 
-        private void LoadSelectedProduct()
-        {
-            try
-            {
-                if (tblproductstock.SelectedRows.Count > 0 && tblproductstock.SelectedRows[0].Cells["ProductID"].Value != null)
-                {
-                    var selectedRow = tblproductstock.SelectedRows[0];
-                    txtproid.Text = selectedRow.Cells["ProductID"].Value.ToString();
-                    comboboxcategory.SelectedItem = selectedRow.Cells["Category"].Value.ToString();
-                    txtproname.Text = selectedRow.Cells["ProductName"].Value.ToString();
-                    txtproprice.Text = selectedRow.Cells["Price"].Value.ToString();
-                    txtproqty.Text = selectedRow.Cells["StockQuantity"].Value.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Silent fail for selection changes
-            }
-        }
+       
 
         private void FilterProducts()
         {
@@ -321,8 +276,8 @@ namespace ElectronicShopManagement.Forms
                      p.ProductID.ToLower().Contains(searchText)) &&
                     (selectedCategory == "All Categories" || p.Category == selectedCategory)
                 ).ToList();
-
-                RefreshDataGridView();
+                tblproductstock.DataSource = null;
+                tblproductstock.DataSource = filteredProducts;
             }
             catch (Exception ex)
             {
@@ -417,6 +372,16 @@ namespace ElectronicShopManagement.Forms
             {
                 MessageBox.Show($"Error updating categories: {ex.Message}", "Error");
             }
+        }
+
+        private void txtproid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            UpdateProduct();
         }
     }
 }

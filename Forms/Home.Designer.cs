@@ -183,6 +183,7 @@
             // 
             // tblrecentsell
             // 
+            this.tblrecentsell.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tblrecentsell.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tblrecentsell.Location = new System.Drawing.Point(12, 201);
             this.tblrecentsell.Name = "tblrecentsell";

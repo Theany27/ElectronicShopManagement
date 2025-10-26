@@ -130,9 +130,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(20, 119);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 19);
+            this.label1.Size = new System.Drawing.Size(49, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Hello";
+            this.label1.Text = "Hello,";
             // 
             // pictureBox1
             // 

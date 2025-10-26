@@ -35,18 +35,24 @@ namespace ElectronicShopManagement
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            //if (txtusername.Text == "kodot" && txtpassword.Text == "123")
-            //{
+            if (txtusername.Text == "kodot" && txtpassword.Text == "123")
+            {
                 FormDashboard forms = new FormDashboard();
                 forms.Show();
                 this.Hide();
-            //}
-            //else
-            //{
-                //MessageBox.Show("Wrong Username or Password");
-                //txtpassword.Text = "";
-            //    txtusername.Text = "";
-            //}
+            }
+            else if(txtusername.Text !="kodot")
+            {
+                MessageBox.Show("Wrong Username!");
+                txtpassword.Text = "";
+                txtusername.Text = "";
+            }
+            else if (txtpassword.Text != "123")
+            {
+                MessageBox.Show("Wrong Password!");
+                txtpassword.Text = "";
+                txtusername.Text = "";
+            }
         }
 
         private void labelclear_Click(object sender, EventArgs e)

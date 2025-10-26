@@ -19,23 +19,43 @@ namespace ElectronicShopManagement.Forms
     public partial class Sell : Form
     {
         public static List<ProductForSellModel> products = new List<ProductForSellModel>();
-        
+        public static List<ProductForSellModel> LastInvoice = new List<ProductForSellModel>();
+        public static event Action<List<ProductForSellModel>> InvoiceCreated;
+        public static List<RecentSell> RecentProducts = new List<RecentSell>();
+
 
         public Sell()
         {
             InitializeComponent();
-            var selectedCategory = ProductData.GetProducts();
+
+            //tblshowproductsell.Refresh();
+            //tblshowproductsell.DataSource = products;
+            //tblshowproductsell.Columns["totalAmount"].Visible = false;
+            //tblshowproductsell.Columns["ID"].Visible = false;
+            //tblshowproductsell.Columns["date"].Visible = false;
+
+
+            var selectedCategory = Products_Stock.SharedProducts;
+            
 
             var categories = selectedCategory.Select(p => p.Category).Distinct().ToList();
             comboboxsell.DataSource = categories;
             comboboxsell.SelectedIndexChanged += comboboxsell_SelectedIndexChanged;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var minusPro = Products_Stock.SharedProducts.FirstOrDefault(p => p.ProductName == comboboxsellproname.Text);
+
             if (combocashier.SelectedItem == null)
             { 
                 MessageBox.Show("Please select Cashier name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (minusPro.StockQuantity < Convert.ToInt32(txtsellqty.Text))
+            {
+                MessageBox.Show("Not enough stock available!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             ProductForSellModel productsModel = new ProductForSellModel()
@@ -53,21 +73,22 @@ namespace ElectronicShopManagement.Forms
             
             products.Add(productsModel);
             
-
+            minusPro.StockQuantity -= Convert.ToInt32(txtsellqty.Text);
             productsModel.Amount = productsModel.Prices * productsModel.SellQty;
             productsModel.totalAmount = products.Sum(p => p.Prices * p.SellQty);
             txtamount.Text = productsModel.totalAmount.ToString("0.00");
 
             txtsellqty.Text = "1";
 
-           
+
 
             tblshowproductsell.DataSource = null;
             tblshowproductsell.DataSource = products;
+            //tblshowproductsell.Refresh();
             tblshowproductsell.Columns["totalAmount"].Visible = false;
             tblshowproductsell.Columns["ID"].Visible = false;
             tblshowproductsell.Columns["date"].Visible = false;
-            tblshowproductsell.Columns["Cashier"].Visible = false;
+            //tblshowproductsell.Columns["Cashier"].Visible = false;
 
         }
 
@@ -115,14 +136,27 @@ namespace ElectronicShopManagement.Forms
                             break;
                         }
                     }
+                        var data = products;
+                        var recentData = data.Select(p => new RecentSell
+                        {
+                            Name = p.Name,
+                            Prices = p.Prices,
+                            SellQty = p.SellQty,
+                            totalAmount = p.totalAmount,
+                            Cashier = p.Cashier,
+                            date = p.date,
+                            Amount = p.Amount,
+                            Categories = p.Categories
+                        }).ToList();
+                        RecentProducts.AddRange(recentData);
                         products.Clear();
+
                         tblshowproductsell.DataSource = null;
                         tblshowproductsell.DataSource = products; // rebind
                         tblshowproductsell.Columns["totalAmount"].Visible = false;
                         tblshowproductsell.Columns["ID"].Visible = false;
                         tblshowproductsell.Columns["date"].Visible = false;
                         tblshowproductsell.Columns["Cashier"].Visible = false;
-
                         txtamount.Text = "0.00";
                     }
                     break;
@@ -157,14 +191,11 @@ namespace ElectronicShopManagement.Forms
                 }
             );
 
-            //Invoice invoice = new Invoice();
-            //invoice.Show();
-            //products.Clear();
+            
 
-            //generate qr code
             string qrText = response.Data.QR;
             string md5 = response.Data.MD5;
-
+            //generate qr code
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
@@ -178,7 +209,7 @@ namespace ElectronicShopManagement.Forms
             await CheckPaymentAsync(md5);
             
 
-
+            //it loops all form if BakongKhqr close
             foreach (Form f in Application.OpenForms)
             {
                 if (f is BakongKhqr)
@@ -206,7 +237,7 @@ namespace ElectronicShopManagement.Forms
         private void comboboxsell_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedName = comboboxsell.SelectedItem.ToString();
-            var products = ProductData.GetProducts()
+            var products = Products_Stock.SharedProducts
                                       .Where(p => p.Category == selectedName)
                                       .ToList();
 
@@ -219,6 +250,8 @@ namespace ElectronicShopManagement.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            var minusPro = Products_Stock.SharedProducts.FirstOrDefault(p => p.ProductName == comboboxsellproname.Text);
+            minusPro.StockQuantity += products.Sum(p => p.SellQty);
             MessageBox.Show("Are you sure to cancel this item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (tblshowproductsell.CurrentRow != null)
             {
@@ -236,6 +269,11 @@ namespace ElectronicShopManagement.Forms
 
                 }
             }
+            else
+            {
+                MessageBox.Show("Please select a valid row to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             if (products.Count == 0)
                 txtamount.Text = "0.00";
             else
@@ -244,12 +282,17 @@ namespace ElectronicShopManagement.Forms
 
         private void Sell_Load(object sender, EventArgs e)
         {
-
         }
 
         private void txtamount_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            tblshowproductsell.DataSource=null;
+            tblshowproductsell.DataSource=products;
         }
     }
 }
