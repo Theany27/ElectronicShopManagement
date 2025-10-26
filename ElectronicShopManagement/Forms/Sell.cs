@@ -27,15 +27,21 @@ namespace ElectronicShopManagement.Forms
         public Sell()
         {
             InitializeComponent();
+
+            //tblshowproductsell.Refresh();
+            //tblshowproductsell.DataSource = products;
+            //tblshowproductsell.Columns["totalAmount"].Visible = false;
+            //tblshowproductsell.Columns["ID"].Visible = false;
+            //tblshowproductsell.Columns["date"].Visible = false;
+
+
             var selectedCategory = Products_Stock.SharedProducts;
+            
 
             var categories = selectedCategory.Select(p => p.Category).Distinct().ToList();
             comboboxsell.DataSource = categories;
             comboboxsell.SelectedIndexChanged += comboboxsell_SelectedIndexChanged;
-            tblshowproductsell.DataSource = products;
-            tblshowproductsell.Columns["totalAmount"].Visible = false;
-            tblshowproductsell.Columns["ID"].Visible = false;
-            tblshowproductsell.Columns["date"].Visible = false;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,7 +80,7 @@ namespace ElectronicShopManagement.Forms
 
             txtsellqty.Text = "1";
 
-           
+
 
             tblshowproductsell.DataSource = null;
             tblshowproductsell.DataSource = products;
@@ -130,7 +136,7 @@ namespace ElectronicShopManagement.Forms
                             break;
                         }
                     }
-                        var data =products;
+                        var data = products;
                         var recentData = data.Select(p => new RecentSell
                         {
                             Name = p.Name,
@@ -244,6 +250,8 @@ namespace ElectronicShopManagement.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            var minusPro = Products_Stock.SharedProducts.FirstOrDefault(p => p.ProductName == comboboxsellproname.Text);
+            minusPro.StockQuantity += products.Sum(p => p.SellQty);
             MessageBox.Show("Are you sure to cancel this item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (tblshowproductsell.CurrentRow != null)
             {
@@ -261,6 +269,11 @@ namespace ElectronicShopManagement.Forms
 
                 }
             }
+            else
+            {
+                MessageBox.Show("Please select a valid row to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             if (products.Count == 0)
                 txtamount.Text = "0.00";
             else
@@ -269,12 +282,17 @@ namespace ElectronicShopManagement.Forms
 
         private void Sell_Load(object sender, EventArgs e)
         {
-
         }
 
         private void txtamount_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            tblshowproductsell.DataSource=null;
+            tblshowproductsell.DataSource=products;
         }
     }
 }

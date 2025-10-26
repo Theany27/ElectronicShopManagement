@@ -44,6 +44,7 @@
             this.txtamount = new System.Windows.Forms.Label();
             this.combocashier = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tblshowproductsell)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,7 +128,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(622, 170);
+            this.button1.Location = new System.Drawing.Point(750, 169);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 29);
             this.button1.TabIndex = 31;
@@ -138,7 +139,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(779, 170);
+            this.button2.Location = new System.Drawing.Point(907, 169);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(148, 29);
             this.button2.TabIndex = 32;
@@ -213,11 +214,23 @@
             this.label2.TabIndex = 37;
             this.label2.Text = "Cashier Name";
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(614, 170);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(130, 29);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "Refresh";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Sell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 639);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.combocashier);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtamount);
@@ -261,5 +274,6 @@
         private System.Windows.Forms.Label txtamount;
         private System.Windows.Forms.ComboBox combocashier;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button3;
     }
 }
