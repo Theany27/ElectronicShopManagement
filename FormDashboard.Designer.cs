@@ -64,16 +64,18 @@
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.Color.Red;
             this.button5.Location = new System.Drawing.Point(52, 461);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(111, 31);
             this.button5.TabIndex = 7;
             this.button5.Text = "Exit";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
+            this.button4.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(3, 403);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(223, 31);
@@ -84,6 +86,7 @@
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(3, 332);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(223, 31);
@@ -94,6 +97,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(3, 257);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(223, 31);
@@ -104,6 +108,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(3, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(223, 31);

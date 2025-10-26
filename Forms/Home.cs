@@ -18,8 +18,6 @@ namespace ElectronicShopManagement.Forms
             InitializeComponent();
             Products_Stock.InventoryChanged -= OnInventoryChanged;
             Products_Stock.InventoryChanged += OnInventoryChanged;
-            Sell.InvoiceCreated -= OnInvoiceCreated;
-            Sell.InvoiceCreated += OnInvoiceCreated;
             panel3.Cursor = Cursors.Hand;
             label4.Cursor = Cursors.Hand;
             label5.Cursor = Cursors.Hand;
@@ -32,18 +30,15 @@ namespace ElectronicShopManagement.Forms
             {
                 RefreshProductsStockCount();
                 RefreshLowStockCount();
-
-
-                if (Sell.LastInvoice != null && Sell.LastInvoice.Count > 0)
-                    BindInvoiceToHome(Sell.LastInvoice);
             };
 
 
             this.FormClosed += (s, e) =>
             {
                 Products_Stock.InventoryChanged -= OnInventoryChanged;
-                Sell.InvoiceCreated -= OnInvoiceCreated;
             };
+            labelsellhistory.Text=  Sell.RecentProducts.Count().ToString();
+            labelreport.Text =   SalesRepository.report.Count().ToString();
         }
 
         private void OnInventoryChanged()
@@ -156,14 +151,12 @@ namespace ElectronicShopManagement.Forms
         private void Home_Load(object sender, EventArgs e)
         {
             tblrecentsell.DataSource = null;
-            tblrecentsell.DataSource =Sell.RecentProducts;
+            tblrecentsell.DataSource = Sell.RecentProducts;
             tblrecentsell.Refresh();
 
             RefreshProductsStockCount();
             RefreshLowStockCount();
 
-            if (Sell.LastInvoice != null && Sell.LastInvoice.Count > 0)
-                BindInvoiceToHome(Sell.LastInvoice);
 
             if (tblrecentsell.Columns.Contains("ID"))
                 tblrecentsell.Columns["ID"].Visible = false;

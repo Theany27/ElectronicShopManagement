@@ -38,6 +38,7 @@
             this.btnlogin = new System.Windows.Forms.Button();
             this.labelclear = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkpass = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -86,23 +87,25 @@
             // 
             // txtusername
             // 
-            this.txtusername.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtusername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtusername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtusername.Location = new System.Drawing.Point(115, 224);
+            this.txtusername.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.Location = new System.Drawing.Point(115, 214);
             this.txtusername.Multiline = true;
             this.txtusername.Name = "txtusername";
-            this.txtusername.Size = new System.Drawing.Size(211, 16);
+            this.txtusername.Size = new System.Drawing.Size(211, 26);
             this.txtusername.TabIndex = 4;
             this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged);
             // 
             // txtpassword
             // 
-            this.txtpassword.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtpassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtpassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtpassword.Location = new System.Drawing.Point(115, 295);
+            this.txtpassword.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.Location = new System.Drawing.Point(115, 283);
             this.txtpassword.Multiline = true;
             this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Size = new System.Drawing.Size(211, 14);
+            this.txtpassword.Size = new System.Drawing.Size(211, 26);
             this.txtpassword.TabIndex = 5;
             // 
             // btnlogin
@@ -111,7 +114,7 @@
             this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnlogin.FlatAppearance.BorderSize = 0;
             this.btnlogin.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnlogin.ForeColor = System.Drawing.SystemColors.Control;
             this.btnlogin.Location = new System.Drawing.Point(55, 361);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(301, 38);
@@ -143,11 +146,25 @@
             this.label1.Text = "Exit";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // checkpass
+            // 
+            this.checkpass.AutoSize = true;
+            this.checkpass.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkpass.Location = new System.Drawing.Point(332, 289);
+            this.checkpass.Name = "checkpass";
+            this.checkpass.Size = new System.Drawing.Size(56, 20);
+            this.checkpass.TabIndex = 10;
+            this.checkpass.Text = "Show";
+            this.checkpass.UseVisualStyleBackColor = true;
+            this.checkpass.CheckedChanged += new System.EventHandler(this.checkpass_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(402, 538);
+            this.Controls.Add(this.checkpass);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelclear);
             this.Controls.Add(this.btnlogin);
@@ -179,6 +196,7 @@
         private System.Windows.Forms.Button btnlogin;
         private System.Windows.Forms.Label labelclear;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkpass;
     }
 }
 

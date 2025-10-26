@@ -25,7 +25,7 @@ namespace ElectronicShopManagement
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+             txtpassword.PasswordChar = '●';
         }
 
         private void txtusername_TextChanged(object sender, EventArgs e)
@@ -59,6 +59,20 @@ namespace ElectronicShopManagement
         {
             txtpassword.Text = "";
             txtusername.Text = "";
+        }
+
+       
+
+        private void checkpass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkpass.Checked)
+            {
+                txtpassword.UseSystemPasswordChar = true;
+            }
+            else
+            {
+                txtpassword.UseSystemPasswordChar = false;
+            }
         }
     }
 }

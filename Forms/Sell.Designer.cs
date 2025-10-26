@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtsellqty = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtsellprice = new System.Windows.Forms.TextBox();
@@ -50,6 +51,7 @@
             // 
             // txtsellqty
             // 
+            this.txtsellqty.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtsellqty.Location = new System.Drawing.Point(779, 106);
             this.txtsellqty.Name = "txtsellqty";
             this.txtsellqty.Size = new System.Drawing.Size(129, 20);
@@ -69,6 +71,7 @@
             // 
             // txtsellprice
             // 
+            this.txtsellprice.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtsellprice.Location = new System.Drawing.Point(779, 46);
             this.txtsellprice.Name = "txtsellprice";
             this.txtsellprice.Size = new System.Drawing.Size(129, 20);
@@ -98,6 +101,7 @@
             // 
             // comboboxsell
             // 
+            this.comboboxsell.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.comboboxsell.FormattingEnabled = true;
             this.comboboxsell.Location = new System.Drawing.Point(415, 46);
             this.comboboxsell.Name = "comboboxsell";
@@ -118,6 +122,7 @@
             // 
             // comboboxsellproname
             // 
+            this.comboboxsellproname.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.comboboxsellproname.FormattingEnabled = true;
             this.comboboxsellproname.Location = new System.Drawing.Point(415, 105);
             this.comboboxsellproname.Name = "comboboxsellproname";
@@ -127,41 +132,53 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(750, 169);
+            this.button1.Location = new System.Drawing.Point(760, 160);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 29);
+            this.button1.Size = new System.Drawing.Size(130, 37);
             this.button1.TabIndex = 31;
             this.button1.Text = "Add To Card";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(907, 169);
+            this.button2.Location = new System.Drawing.Point(907, 161);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 29);
+            this.button2.Size = new System.Drawing.Size(148, 37);
             this.button2.TabIndex = 32;
             this.button2.Text = "Cancel Product";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnpayment
             // 
+            this.btnpayment.BackColor = System.Drawing.Color.Gold;
             this.btnpayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnpayment.Location = new System.Drawing.Point(1000, 490);
+            this.btnpayment.Location = new System.Drawing.Point(1000, 482);
             this.btnpayment.Name = "btnpayment";
-            this.btnpayment.Size = new System.Drawing.Size(88, 29);
+            this.btnpayment.Size = new System.Drawing.Size(88, 37);
             this.btnpayment.TabIndex = 33;
             this.btnpayment.Text = "Pay Now!";
-            this.btnpayment.UseVisualStyleBackColor = true;
+            this.btnpayment.UseVisualStyleBackColor = false;
             this.btnpayment.Click += new System.EventHandler(this.btnpayment_Click);
             // 
             // tblshowproductsell
             // 
             this.tblshowproductsell.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tblshowproductsell.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tblshowproductsell.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tblshowproductsell.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.tblshowproductsell.Location = new System.Drawing.Point(12, 216);
             this.tblshowproductsell.Name = "tblshowproductsell";
             this.tblshowproductsell.Size = new System.Drawing.Size(1140, 242);
@@ -188,10 +205,10 @@
             this.txtamount.Size = new System.Drawing.Size(59, 26);
             this.txtamount.TabIndex = 36;
             this.txtamount.Text = "0.00 ";
-            this.txtamount.Click += new System.EventHandler(this.txtamount_Click);
             // 
             // combocashier
             // 
+            this.combocashier.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.combocashier.FormattingEnabled = true;
             this.combocashier.Items.AddRange(new object[] {
             "Theany",
@@ -216,14 +233,15 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(614, 170);
+            this.button3.Location = new System.Drawing.Point(614, 162);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(130, 29);
+            this.button3.Size = new System.Drawing.Size(130, 37);
             this.button3.TabIndex = 39;
             this.button3.Text = "Refresh";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // Sell
             // 
@@ -249,7 +267,6 @@
             this.Controls.Add(this.label3);
             this.Name = "Sell";
             this.Text = "Sell";
-            this.Load += new System.EventHandler(this.Sell_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tblshowproductsell)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

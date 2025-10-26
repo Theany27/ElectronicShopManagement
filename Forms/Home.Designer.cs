@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelsellhistory = new System.Windows.Forms.Label();
             this.toplabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,7 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelreport = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tblrecentsell = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
@@ -51,25 +52,25 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.labelsellhistory);
             this.panel1.Controls.Add(this.toplabel);
             this.panel1.Location = new System.Drawing.Point(53, 32);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 100);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // labelsellhistory
             // 
-            this.label1.AutoSize = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(97, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 28);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "100";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.labelsellhistory.AutoSize = true;
+            this.labelsellhistory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelsellhistory.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelsellhistory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelsellhistory.Location = new System.Drawing.Point(97, 41);
+            this.labelsellhistory.Name = "labelsellhistory";
+            this.labelsellhistory.Size = new System.Drawing.Size(50, 28);
+            this.labelsellhistory.TabIndex = 9;
+            this.labelsellhistory.Text = "100";
+            this.labelsellhistory.Click += new System.EventHandler(this.label1_Click);
             // 
             // toplabel
             // 
@@ -84,7 +85,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Desktop;
+            this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(345, 32);
@@ -151,24 +152,24 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.RosyBrown;
-            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.labelreport);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Location = new System.Drawing.Point(902, 32);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 100);
             this.panel4.TabIndex = 3;
             // 
-            // label6
+            // labelreport
             // 
-            this.label6.AutoSize = true;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(101, 41);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 28);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "100";
+            this.labelreport.AutoSize = true;
+            this.labelreport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelreport.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelreport.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelreport.Location = new System.Drawing.Point(101, 41);
+            this.labelreport.Name = "labelreport";
+            this.labelreport.Size = new System.Drawing.Size(50, 28);
+            this.labelreport.TabIndex = 15;
+            this.labelreport.Text = "100";
             // 
             // label7
             // 
@@ -185,8 +186,17 @@
             // 
             this.tblrecentsell.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tblrecentsell.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tblrecentsell.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.tblrecentsell.Location = new System.Drawing.Point(12, 201);
             this.tblrecentsell.Name = "tblrecentsell";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tblrecentsell.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tblrecentsell.Size = new System.Drawing.Size(1066, 426);
             this.tblrecentsell.TabIndex = 4;
             // 
@@ -222,13 +232,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelsellhistory;
         private System.Windows.Forms.Label toplabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelreport;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView tblrecentsell;
     }

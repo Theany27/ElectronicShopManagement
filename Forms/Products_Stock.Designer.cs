@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toplabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,6 +63,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox1.Location = new System.Drawing.Point(339, 51);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(234, 20);
@@ -88,9 +90,10 @@
             // 
             // txtproid
             // 
+            this.txtproid.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtproid.Location = new System.Drawing.Point(339, 188);
             this.txtproid.Name = "txtproid";
-            this.txtproid.Size = new System.Drawing.Size(129, 20);
+            this.txtproid.Size = new System.Drawing.Size(221, 20);
             this.txtproid.TabIndex = 13;
             this.txtproid.TextChanged += new System.EventHandler(this.txtproid_TextChanged);
             // 
@@ -107,6 +110,7 @@
             // 
             // comboboxcategory
             // 
+            this.comboboxcategory.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.comboboxcategory.FormattingEnabled = true;
             this.comboboxcategory.Items.AddRange(new object[] {
             "s",
@@ -115,8 +119,9 @@
             "s"});
             this.comboboxcategory.Location = new System.Drawing.Point(339, 130);
             this.comboboxcategory.Name = "comboboxcategory";
-            this.comboboxcategory.Size = new System.Drawing.Size(129, 21);
+            this.comboboxcategory.Size = new System.Drawing.Size(221, 21);
             this.comboboxcategory.TabIndex = 15;
+            this.comboboxcategory.SelectedIndexChanged += new System.EventHandler(this.comboboxcategory_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -131,9 +136,10 @@
             // 
             // txtproname
             // 
+            this.txtproname.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtproname.Location = new System.Drawing.Point(339, 243);
             this.txtproname.Name = "txtproname";
-            this.txtproname.Size = new System.Drawing.Size(129, 20);
+            this.txtproname.Size = new System.Drawing.Size(221, 20);
             this.txtproname.TabIndex = 17;
             this.txtproname.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
@@ -151,9 +157,10 @@
             // 
             // txtproprice
             // 
+            this.txtproprice.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtproprice.Location = new System.Drawing.Point(703, 130);
             this.txtproprice.Name = "txtproprice";
-            this.txtproprice.Size = new System.Drawing.Size(129, 20);
+            this.txtproprice.Size = new System.Drawing.Size(235, 20);
             this.txtproprice.TabIndex = 19;
             // 
             // label5
@@ -169,9 +176,10 @@
             // 
             // txtproqty
             // 
+            this.txtproqty.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtproqty.Location = new System.Drawing.Point(703, 190);
             this.txtproqty.Name = "txtproqty";
-            this.txtproqty.Size = new System.Drawing.Size(129, 20);
+            this.txtproqty.Size = new System.Drawing.Size(235, 20);
             this.txtproqty.TabIndex = 21;
             // 
             // label6
@@ -187,42 +195,56 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(570, 232);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 31);
+            this.button1.Size = new System.Drawing.Size(106, 38);
             this.button1.TabIndex = 22;
             this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(703, 232);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 31);
+            this.button2.Size = new System.Drawing.Size(106, 38);
             this.button2.TabIndex = 23;
             this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.Red;
+            this.button3.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(832, 232);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(106, 31);
+            this.button3.Size = new System.Drawing.Size(106, 38);
             this.button3.TabIndex = 24;
             this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // tblproductstock
             // 
             this.tblproductstock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tblproductstock.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tblproductstock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tblproductstock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tblproductstock.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.tblproductstock.Location = new System.Drawing.Point(12, 287);
             this.tblproductstock.Name = "tblproductstock";
             this.tblproductstock.RowHeadersWidth = 62;
-            this.tblproductstock.Size = new System.Drawing.Size(1127, 405);
+            this.tblproductstock.Size = new System.Drawing.Size(1127, 323);
             this.tblproductstock.TabIndex = 25;
             // 
             // Products_Stock
