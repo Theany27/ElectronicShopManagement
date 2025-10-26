@@ -16,10 +16,13 @@ namespace ElectronicShopManagement.Forms
         public Home()
         {
             InitializeComponent();
+
             Products_Stock.InventoryChanged -= OnInventoryChanged;
             Products_Stock.InventoryChanged += OnInventoryChanged;
+
             Sell.InvoiceCreated -= OnInvoiceCreated;
             Sell.InvoiceCreated += OnInvoiceCreated;
+
             panel3.Cursor = Cursors.Hand;
             label4.Cursor = Cursors.Hand;
             label5.Cursor = Cursors.Hand;
@@ -33,9 +36,11 @@ namespace ElectronicShopManagement.Forms
                 RefreshProductsStockCount();
                 RefreshLowStockCount();
 
-
-                if (Sell.LastInvoice != null && Sell.LastInvoice.Count > 0)
-                    BindInvoiceToHome(Sell.LastInvoice);
+                // โหลดประวัติที่มีอยู่ + อัปเดตเลขครั้งแรก
+                BindInvoiceToHome(Sell.LastInvoice ?? new List<ProductForSellModel>());
+                RefreshSellHistoriesCount();
+                //if (Sell.LastInvoice != null && Sell.LastInvoice.Count > 0)
+                //    BindInvoiceToHome(Sell.LastInvoice);
             };
 
 
@@ -117,16 +122,41 @@ namespace ElectronicShopManagement.Forms
             dlg.ShowDialog(this);
         }
 
+        // ======= Sell Histories: อัปเดตเลขในการ์ด panel1 =======
+        private void RefreshSellHistoriesCount()
+        {
+            // นับจำนวน "รายการประวัติการขาย"
+            int count = Sell.RecentProducts.Count;
+
+            // หา label ที่เป็นตัวเลขภายใน panel1 (การ์ด Sell Histries)
+            Label lbl = panel1.Controls.OfType<Label>()
+                .FirstOrDefault(l => int.TryParse(l.Text.Trim(), out _));
+
+            // ถ้าออกแบบมาไม่ใช่ตัวเลขตั้งต้น ให้ fallback เป็น label ที่ฟอนต์ใหญ่สุดใน panel1
+            if (lbl == null)
+            {
+                lbl = panel1.Controls.OfType<Label>()
+                    .OrderByDescending(l => l.Font.Size)
+                    .FirstOrDefault();
+            }
+
+            if (lbl != null) lbl.Text = count.ToString();
+        }
+
         private void OnInvoiceCreated(List<ProductForSellModel> items)
         {
-
             if (InvokeRequired)
             {
-                BeginInvoke((Action)(() => BindInvoiceToHome(items)));
+                BeginInvoke((Action)(() =>
+                {
+                    BindInvoiceToHome(items);
+                    RefreshSellHistoriesCount();
+                }));
             }
             else
             {
                 BindInvoiceToHome(items);
+                RefreshSellHistoriesCount();
             }
         }
 
@@ -135,7 +165,8 @@ namespace ElectronicShopManagement.Forms
         {
             tblrecentsell.AutoGenerateColumns = true;
             tblrecentsell.DataSource = null;
-            tblrecentsell.DataSource = items;
+            tblrecentsell.DataSource = Sell.RecentProducts; // สำคัญ
+           // tblrecentsell.DataSource = items;
             tblrecentsell.Refresh();
             tblrecentsell.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             tblrecentsell.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

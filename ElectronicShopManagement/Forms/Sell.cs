@@ -137,6 +137,7 @@ namespace ElectronicShopManagement.Forms
                         }
                     }
                         var data = products;
+
                         var recentData = data.Select(p => new RecentSell
                         {
                             Name = p.Name,
@@ -149,6 +150,11 @@ namespace ElectronicShopManagement.Forms
                             Categories = p.Categories
                         }).ToList();
                         RecentProducts.AddRange(recentData);
+
+                        // ✅ ส่งข้อมูลใบเสร็จล่าสุดออกไปให้หน้า Home อัปเดต
+                        LastInvoice = products.ToList();
+                        InvoiceCreated?.Invoke(LastInvoice);
+
                         products.Clear();
 
                         tblshowproductsell.DataSource = null;
